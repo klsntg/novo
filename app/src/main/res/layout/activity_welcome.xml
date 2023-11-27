@@ -53,7 +53,7 @@
         android:layout_marginStart="22dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="9dp"
-        android:backgroundTint="#000000"
+        android:backgroundTint="#3F51B5"
         android:text="Get Started"
         android:onClick="onSignInActivityClick"
         android:clickable="true"
