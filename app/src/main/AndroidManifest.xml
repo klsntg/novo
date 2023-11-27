@@ -32,6 +32,10 @@
             android:exported="false"
             android:label="Welcome" />
         <activity
+            android:name=".NavbarActivity"
+            android:exported="false"
+            android:label="Navbar" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
