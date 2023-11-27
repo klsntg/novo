@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ICS26011FinalProject</string>
+    <string name="user_profile">User Profile</string>
+    <string name="logout">Logout</string>
+    <string name="email">email</string>
+    <string name="first_name_last_name">First Name, Last Name</string>
+</resources>
