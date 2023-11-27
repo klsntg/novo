@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".UserFragment">
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="vertical"
+       android:gravity="center_horizontal">
+
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:paddingTop="100dp"
+           android:paddingBottom="100dp"
+           android:text="@string/user_profile"/>
+       <ImageView
+           android:id="@+id/imageView2"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:paddingBottom="100dp"
+           app:srcCompat="@drawable/account_circle"
+           android:importantForAccessibility="no" />
+       <TextView
+           android:id="@+id/tvName"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:paddingBottom="30dp"
+           android:text="@string/first_name_last_name"/>
+       <TextView
+           android:id="@+id/tvEmail"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:paddingBottom="120dp"
+           android:text="@string/email"/>
+       <Button
+           android:id="@+id/btnLogout"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:backgroundTint="#000000"
+           android:text="@string/logout"
+           app:cornerRadius="1dp"/>
+
+   </LinearLayout>
+
+
+</FrameLayout>

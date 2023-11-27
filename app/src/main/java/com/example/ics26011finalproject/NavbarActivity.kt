@@ -18,10 +18,14 @@ class NavbarActivity : AppCompatActivity() { private lateinit var bottomNavigati
                     replaceFragment(HomeFragment())
                     true
                 }
-                /*R.id.navCategories ->{
-                    replaceFragment(Categories())
+                R.id.navCategories ->{
+                    replaceFragment(CategoriesFragment())
                     true
-                }*/
+                }
+                R.id.navAccount ->{
+                    replaceFragment(UserFragment())
+                    true
+                }
                 else -> false
             }
         }

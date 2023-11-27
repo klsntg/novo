@@ -13,15 +13,6 @@
         android:theme="@style/Theme.ICS26011FinalProject"
         tools:targetApi="31">
         <activity
-            android:name=".UserProfileActivity"
-            android:exported="false" />
-        <activity
-            android:name=".UserAccountActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ForgotPasswordActivity"
-            android:exported="false" />
-        <activity
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity

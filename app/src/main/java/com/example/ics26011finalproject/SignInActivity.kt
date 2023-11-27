@@ -38,13 +38,18 @@ class SignInActivity : AppCompatActivity() {
                     if (user != null) {
                         Toast.makeText(this, "Login Successful", Toast.LENGTH_LONG).show()
 
-                        val intent = Intent(this, UserProfileActivity::class.java)
-                        intent.putExtra("USERNAME", user.username)
-                        intent.putExtra("FIRST_NAME", user.firstName)
-                        intent.putExtra("LAST_NAME", user.lastName)
-                        intent.putExtra("EMAIL", user.email)
+                        val userFragment = UserFragment()
+                        val bundle = Bundle()
+                        bundle.putString("USERNAME", user.username)
+                        bundle.putString("FIRST_NAME", user.firstName)
+                        bundle.putString("LAST_NAME", user.lastName)
+                        bundle.putString("EMAIL", user.email)
+                        userFragment.arguments = bundle
 
-                        startActivity(intent)
+                        supportFragmentManager.beginTransaction()
+                            .replace(R.id.frame_main, userFragment)
+                            .addToBackStack(null)
+                            .commit()
 
                         usernameEditText.text.clear()
                         passwordEditText.text.clear()
