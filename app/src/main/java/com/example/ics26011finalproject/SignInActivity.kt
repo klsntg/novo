@@ -75,7 +75,7 @@ class SignInActivity : AppCompatActivity() {
 
         btnLogIn.setOnClickListener {
 
-            val i = Intent(this, UserProfileActivity::class.java)
+            val i = Intent(this, NavbarActivity::class.java)
             startActivity(i)
 
         }
