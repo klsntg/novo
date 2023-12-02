@@ -19,9 +19,10 @@ class UserFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val firstName = arguments?.getString("FIRST_NAME")
-        val lastName = arguments?.getString("LAST_NAME")
-        val email = arguments?.getString("EMAIL")
+        val firstName = arguments?.getString("FIRST_NAME") ?: ""
+        val lastName = arguments?.getString("LAST_NAME") ?: ""
+        val email = arguments?.getString("EMAIL") ?: ""
+
 
         val tvName = view.findViewById<TextView>(R.id.tvName)
         val tvEmail = view.findViewById<TextView>(R.id.tvEmail)

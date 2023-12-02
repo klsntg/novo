@@ -23,7 +23,15 @@ class NavbarActivity : AppCompatActivity() { private lateinit var bottomNavigati
                     true
                 }
                 R.id.navAccount ->{
-                    replaceFragment(UserFragment())
+                    val userFragment = UserFragment()
+                    val bundle = Bundle()
+                    bundle.putString("USERNAME", intent.getStringExtra("USERNAME"))
+                    bundle.putString("FIRST_NAME", intent.getStringExtra("FIRST_NAME"))
+                    bundle.putString("LAST_NAME", intent.getStringExtra("LAST_NAME"))
+                    bundle.putString("EMAIL", intent.getStringExtra("EMAIL"))
+                    userFragment.arguments = bundle
+
+                    replaceFragment(userFragment)
                     true
                 }
                 else -> false
