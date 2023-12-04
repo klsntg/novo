@@ -13,6 +13,11 @@
         android:theme="@style/Theme.ICS26011FinalProject"
         tools:targetApi="31">
         <activity
+            android:name=".BookLayoutAdapter"
+            android:exported="false"
+            android:label="@string/title_activity_book_layout_adapter"
+            android:theme="@style/Theme.ICS26011FinalProject" />
+        <activity
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity

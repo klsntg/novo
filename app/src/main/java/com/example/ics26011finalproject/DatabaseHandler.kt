@@ -185,8 +185,8 @@ class DatabaseHandler (context: Context) : SQLiteOpenHelper (context, DATABASE_N
             put(KEY_PRICE, "PHP 1,000")
             put(KEY_DESCRIPTION,"Sapiens: A Brief History of Humankind\" by Yuval Noah Harari offers a sweeping overview of human history, exploring the evolution of Homo sapiens from ancient times to the present. Harari covers vital milestones, including the Cognitive and Agricultural Revolutions, the formation of empires, and the impact of scientific advancements. The book prompts readers to reconsider established narratives, examining the interplay of biology and culture in shaping human societies. Through engaging storytelling, Harari presents a thought-provoking reflection on our species' past, present, and potential future.")
             put(KEY_IMAGE_SOURCE, "drawable/book1")
-            put(KEY_ADD_TO_LIBRARY, 0)
-            put(KEY_ADD_TO_FAVE, 0)
+            put(KEY_ADD_TO_LIBRARY, 1)
+            put(KEY_ADD_TO_FAVE, 1)
         }
         db?.insert(TABLE_DETAILS, null, book1)
 
@@ -297,10 +297,11 @@ class DatabaseHandler (context: Context) : SQLiteOpenHelper (context, DATABASE_N
         } ?: -1
     }
     @SuppressLint("Range")
-    fun getBooksByCategory(category: String): List<Details> {
+    fun getBooksByCategory(category: String, showInLibrary: Boolean, showInFavorites: Boolean): List<Details> {
         val db = this.readableDatabase
-        val query = "SELECT * FROM $TABLE_DETAILS WHERE $KEY_CATEGORY_ID_FK = ?"
-        val selectionArgs = arrayOf(getCategoryID(category, db).toString())
+        val query = "SELECT * FROM $TABLE_DETAILS WHERE $KEY_CATEGORY_ID_FK = ?" +
+                " AND ($KEY_ADD_TO_LIBRARY = ? OR $KEY_ADD_TO_FAVE = ?)"
+        val selectionArgs = arrayOf(getCategoryID(category, db).toString(), showInLibrary.toString(), showInFavorites.toString())
 
         val cursor = db.rawQuery(query, selectionArgs)
         val books = mutableListOf<Details>()
@@ -316,8 +317,8 @@ class DatabaseHandler (context: Context) : SQLiteOpenHelper (context, DATABASE_N
                     it.getString(it.getColumnIndex(KEY_RATING)),
                     it.getString(it.getColumnIndex(KEY_PRICE)),
                     it.getString(it.getColumnIndex(KEY_DESCRIPTION)),
-                    it.getInt(it.getColumnIndex(KEY_ADD_TO_LIBRARY)) !=0,
-                    it.getInt(it.getColumnIndex(KEY_ADD_TO_FAVE)) !=0
+                    it.getInt(it.getColumnIndex(KEY_ADD_TO_LIBRARY)) != 0,
+                    it.getInt(it.getColumnIndex(KEY_ADD_TO_FAVE)) != 0
                 )
                 books.add(book)
             }
@@ -326,4 +327,5 @@ class DatabaseHandler (context: Context) : SQLiteOpenHelper (context, DATABASE_N
         db.close()
         return books
     }
+
 }

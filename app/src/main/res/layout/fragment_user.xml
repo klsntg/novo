@@ -6,51 +6,79 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".UserFragment">
 
-   <LinearLayout
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       android:orientation="vertical"
-       android:gravity="center_horizontal">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
 
-       <TextView
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:paddingTop="10dp"
-           android:paddingBottom="50dp"
-           android:textSize="50sp"
-           android:textColor="@color/black"
-           android:textStyle="bold"
-           android:text="@string/user_profile"/>
-       <ImageView
-           android:id="@+id/imageView2"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:paddingBottom="100dp"
-           app:srcCompat="@drawable/account_circle"
-           android:importantForAccessibility="no" />
-       <TextView
-           android:id="@+id/tvName"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:paddingBottom="50dp"
-           android:textSize="25sp"
-           android:text="@string/first_name_last_name"/>
-       <TextView
-           android:id="@+id/tvEmail"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:paddingBottom="120dp"
-           android:textSize="25sp"
-           android:text="@string/email"/>
-       <Button
-           android:id="@+id/btnLogout"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:backgroundTint="#000000"
-           android:text="@string/logout"
-           app:cornerRadius="1dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="50dp"
+            android:textSize="50sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:text="@string/user_profile"/>
 
-   </LinearLayout>
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="100dp"
+            app:srcCompat="@drawable/account_circle"
+            android:importantForAccessibility="no" />
 
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:paddingLeft="45dp"
+            android:textSize="20sp"
+            android:fontFamily="@font/open_sans_semibold"/>
 
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/first_name_last_name"
+            android:paddingRight="45dp"
+            android:paddingLeft="45dp"
+            android:paddingBottom="20dp"
+            android:textSize="20sp"
+            android:fontFamily="@font/open_sans"/>
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:paddingLeft="45dp"
+            android:textSize="20sp"
+            android:fontFamily="@font/open_sans_semibold"/>
+
+        <TextView
+            android:id="@+id/tvEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/email"
+            android:paddingRight="45dp"
+            android:paddingBottom="40dp"
+            android:textSize="20sp"
+            android:fontFamily="@font/open_sans"/>
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="325dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#000000"
+            android:fontFamily="@font/open_sans_semibold"
+            android:paddingBottom="15dp"
+            android:text="@string/logout"
+            android:textSize="30dp"
+            app:cornerRadius="1dp" />
+
+    </LinearLayout>
 </FrameLayout>
