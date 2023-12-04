@@ -32,6 +32,7 @@
                 android:layout_height="wrap_content"
                 android:padding="10sp">
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cvNonFic"
                     android:layout_width="60dp"
                     android:layout_height="100dp"
                     android:layout_row="0"
@@ -119,6 +120,7 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cvFantasy"
                     android:layout_width="60dp"
                     android:layout_height="100dp"
                     android:layout_row="1"
@@ -162,6 +164,7 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cvYoungAdult"
                     android:layout_width="60dp"
                     android:layout_height="100dp"
                     android:layout_row="1"
@@ -204,6 +207,7 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cvCrime"
                     android:layout_width="60dp"
                     android:layout_height="100dp"
                     android:layout_row="2"
@@ -246,6 +250,7 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cvHorror"
                     android:layout_width="60dp"
                     android:layout_height="100dp"
                     android:layout_row="2"
@@ -288,6 +293,7 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cvSciFi"
                     android:layout_width="60dp"
                     android:layout_height="100dp"
                     android:layout_row="3"
@@ -330,6 +336,7 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cvDrama"
                     android:layout_width="60dp"
                     android:layout_height="100dp"
                     android:layout_row="3"

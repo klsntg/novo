@@ -28,7 +28,9 @@ data class Details(
     val imageSource: String,
     val rating: String,
     val price: String,
-    val description: String
+    val description: String,
+    val addToLibrary: Boolean,
+    val addToFave: Boolean
 )
 
 class DatabaseHandler (context: Context) : SQLiteOpenHelper (context, DATABASE_NAME, null, DATABASE_VERSION) {
@@ -57,6 +59,8 @@ class DatabaseHandler (context: Context) : SQLiteOpenHelper (context, DATABASE_N
         private const val KEY_RATING = "rating"
         private const val KEY_PRICE = "price"
         private const val KEY_DESCRIPTION = "description"
+        private const val KEY_ADD_TO_LIBRARY = "add_to_library"
+        private const val KEY_ADD_TO_FAVE = "add_to_fave"
 
     }
 
@@ -81,6 +85,8 @@ class DatabaseHandler (context: Context) : SQLiteOpenHelper (context, DATABASE_N
                 "$KEY_RATING TEXT," +
                 "$KEY_PRICE TEXT," +
                 "$KEY_DESCRIPTION TEXT," +
+                "$KEY_ADD_TO_LIBRARY INTEGER, " +
+                "$KEY_ADD_TO_FAVE INTEGER, " +
                 "FOREIGN KEY($KEY_CATEGORY_ID_FK) REFERENCES $TABLE_CATEGORIES($KEY_CATEGORY_ID))")
 
         db?.execSQL(CREATE_USERS_TABLE)
@@ -179,6 +185,8 @@ class DatabaseHandler (context: Context) : SQLiteOpenHelper (context, DATABASE_N
             put(KEY_PRICE, "PHP 1,000")
             put(KEY_DESCRIPTION,"Sapiens: A Brief History of Humankind\" by Yuval Noah Harari offers a sweeping overview of human history, exploring the evolution of Homo sapiens from ancient times to the present. Harari covers vital milestones, including the Cognitive and Agricultural Revolutions, the formation of empires, and the impact of scientific advancements. The book prompts readers to reconsider established narratives, examining the interplay of biology and culture in shaping human societies. Through engaging storytelling, Harari presents a thought-provoking reflection on our species' past, present, and potential future.")
             put(KEY_IMAGE_SOURCE, "drawable/book1")
+            put(KEY_ADD_TO_LIBRARY, 0)
+            put(KEY_ADD_TO_FAVE, 0)
         }
         db?.insert(TABLE_DETAILS, null, book1)
 
@@ -190,6 +198,8 @@ class DatabaseHandler (context: Context) : SQLiteOpenHelper (context, DATABASE_N
             put(KEY_PRICE, "PHP 1,300")
             put(KEY_DESCRIPTION,"Oscar Wilde’s only novel is the dreamlike story of a young man who sells his soul for eternal youth and beauty. Wilde forged a devastating portrait of the effects of evil and debauchery on a young aesthete in late-19th-century England in this celebrated work. Combining elements of the Gothic horror novel and decadent French fiction, the book centers on a striking premise: As Dorian Gray sinks into a life of crime and gross sensuality, his body retains perfect youth and vigor while his recently painted portrait grows day by day into a hideous record of evil, which he must keep hidden from the world. This mesmerizing tale of horror and suspense has been popular for over a century. It ranks as one of Wilde's most important creations and among the classic achievements of its kind.")
             put(KEY_IMAGE_SOURCE, "drawable/book2")
+            put(KEY_ADD_TO_LIBRARY, 0)
+            put(KEY_ADD_TO_FAVE, 0)
         }
         db?.insert(TABLE_DETAILS, null, book2)
 
@@ -201,6 +211,8 @@ class DatabaseHandler (context: Context) : SQLiteOpenHelper (context, DATABASE_N
             put(KEY_PRICE, "PHP 1,055")
             put(KEY_DESCRIPTION,"\"The Name of the Wind\" follows the tale of Kvothe, a gifted young musician and magician. The story, narrated by Kvothe, recounts his journey from a gifted child in a traveling troupe to a powerful wizard, unraveling mysteries and facing formidable challenges. Rothfuss weaves a rich and immersive narrative, blending magic, music, and the intricate tapestry of Kvothe's life in a captivating fantasy world.")
             put(KEY_IMAGE_SOURCE, "drawable/book3")
+            put(KEY_ADD_TO_LIBRARY, 0)
+            put(KEY_ADD_TO_FAVE, 0)
         }
         db?.insert(TABLE_DETAILS, null, book3)
 
@@ -212,6 +224,8 @@ class DatabaseHandler (context: Context) : SQLiteOpenHelper (context, DATABASE_N
             put(KEY_PRICE, "PHP 600")
             put(KEY_DESCRIPTION,"In a dystopian future, Katniss Everdeen volunteers to take her sister's place in the annual Hunger Games, a televised fight to the death. Suzanne Collins crafts a thrilling narrative that explores survival, sacrifice, and rebellion themes.")
             put(KEY_IMAGE_SOURCE, "drawable/book4")
+            put(KEY_ADD_TO_LIBRARY, 0)
+            put(KEY_ADD_TO_FAVE, 0)
         }
         db?.insert(TABLE_DETAILS, null, book4)
 
@@ -223,6 +237,8 @@ class DatabaseHandler (context: Context) : SQLiteOpenHelper (context, DATABASE_N
             put(KEY_PRICE, "PHP 300")
             put(KEY_DESCRIPTION,"Mikael Blomkvist, a journalist, teams up with a brilliant hacker, Lisbeth Salander, to solve a decades-old disappearance in Sweden. Stieg Larsson's gripping novel combines crime, intrigue, and a complex investigation.")
             put(KEY_IMAGE_SOURCE, "drawable/book5")
+            put(KEY_ADD_TO_LIBRARY, 0)
+            put(KEY_ADD_TO_FAVE, 0)
         }
         db?.insert(TABLE_DETAILS, null, book5)
 
@@ -234,6 +250,8 @@ class DatabaseHandler (context: Context) : SQLiteOpenHelper (context, DATABASE_N
             put(KEY_PRICE, "PHP 400")
             put(KEY_DESCRIPTION,"Stephen King's \"The Shining\" takes readers to the eerie Overlook Hotel, where the Torrance family faces supernatural forces. As the hotel exerts its malevolent influence, the story becomes a chilling exploration of isolation and madness.")
             put(KEY_IMAGE_SOURCE, "drawable/book6")
+            put(KEY_ADD_TO_LIBRARY, 0)
+            put(KEY_ADD_TO_FAVE, 0)
         }
         db?.insert(TABLE_DETAILS, null, book6)
 
@@ -245,6 +263,8 @@ class DatabaseHandler (context: Context) : SQLiteOpenHelper (context, DATABASE_N
             put(KEY_PRICE, "PHP 700")
             put(KEY_DESCRIPTION,"Frank Herbert's \"Dune\" is a science fiction epic set in a distant future. It follows young Paul Atreides as he navigates political intrigue, environmental challenges, and mystical forces on the desert planet of Arrakis.")
             put(KEY_IMAGE_SOURCE, "drawable/book7")
+            put(KEY_ADD_TO_LIBRARY, 0)
+            put(KEY_ADD_TO_FAVE, 0)
         }
         db?.insert(TABLE_DETAILS, null, book7)
 
@@ -256,6 +276,8 @@ class DatabaseHandler (context: Context) : SQLiteOpenHelper (context, DATABASE_N
             put(KEY_PRICE, "PHP 400")
             put(KEY_DESCRIPTION,"Khaled Hosseini's \"The Kite Runner\" explores friendship, betrayal, and redemption in war-torn Afghanistan. The novel follows the intertwined lives of Amir and Hassan against a backdrop of historical upheaval.")
             put(KEY_IMAGE_SOURCE, "drawable/book8")
+            put(KEY_ADD_TO_LIBRARY, 0)
+            put(KEY_ADD_TO_FAVE, 0)
         }
         db?.insert(TABLE_DETAILS, null, book8)
     }
@@ -274,5 +296,34 @@ class DatabaseHandler (context: Context) : SQLiteOpenHelper (context, DATABASE_N
             }
         } ?: -1
     }
+    @SuppressLint("Range")
+    fun getBooksByCategory(category: String): List<Details> {
+        val db = this.readableDatabase
+        val query = "SELECT * FROM $TABLE_DETAILS WHERE $KEY_CATEGORY_ID_FK = ?"
+        val selectionArgs = arrayOf(getCategoryID(category, db).toString())
 
+        val cursor = db.rawQuery(query, selectionArgs)
+        val books = mutableListOf<Details>()
+
+        cursor.use {
+            while (it.moveToNext()) {
+                val book = Details(
+                    it.getInt(it.getColumnIndex(KEY_DETAILS_ID)),
+                    it.getString(it.getColumnIndex(KEY_TITLE)),
+                    it.getString(it.getColumnIndex(KEY_AUTHOR)),
+                    it.getString(it.getColumnIndex(KEY_CATEGORY_ID_FK)),
+                    it.getString(it.getColumnIndex(KEY_IMAGE_SOURCE)),
+                    it.getString(it.getColumnIndex(KEY_RATING)),
+                    it.getString(it.getColumnIndex(KEY_PRICE)),
+                    it.getString(it.getColumnIndex(KEY_DESCRIPTION)),
+                    it.getInt(it.getColumnIndex(KEY_ADD_TO_LIBRARY)) !=0,
+                    it.getInt(it.getColumnIndex(KEY_ADD_TO_FAVE)) !=0
+                )
+                books.add(book)
+            }
+        }
+
+        db.close()
+        return books
+    }
 }
