@@ -65,6 +65,7 @@
         android:fontFamily="@font/open_sans"
         android:hint="Password"
         android:textSize="20sp"
+        android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/btnLogIn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.56"
