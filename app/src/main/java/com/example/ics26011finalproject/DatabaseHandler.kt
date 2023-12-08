@@ -7,6 +7,7 @@ import android.database.Cursor
 import android.database.SQLException
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import java.io.Serializable
 
 
 data class User(
@@ -24,14 +25,14 @@ data class Details(
     val id: Int,
     val title: String,
     val author: String,
-    val category: String,
+    val categoryId: Int,
     val imageSource: String,
     val rating: String,
     val price: String,
     val description: String,
     val addToLibrary: Boolean,
     val addToFave: Boolean
-)
+) : Serializable
 
 class DatabaseHandler (context: Context) : SQLiteOpenHelper (context, DATABASE_NAME, null, DATABASE_VERSION) {
 
@@ -180,7 +181,7 @@ class DatabaseHandler (context: Context) : SQLiteOpenHelper (context, DATABASE_N
         val book1 = ContentValues().apply {
             put(KEY_TITLE, "A Brief History of Humankind")
             put(KEY_AUTHOR, "Yuval Noah Harari")
-            put(KEY_CATEGORY_ID_FK, getCategoryID("Non-Fiction", db)) //error pa siya wala adding of books muna nilagay ko
+            put(KEY_CATEGORY_ID_FK, getCategoryID("Non-Fiction", db))
             put(KEY_RATING, "4.4/5")
             put(KEY_PRICE, "PHP 1,000")
             put(KEY_DESCRIPTION,"Sapiens: A Brief History of Humankind\" by Yuval Noah Harari offers a sweeping overview of human history, exploring the evolution of Homo sapiens from ancient times to the present. Harari covers vital milestones, including the Cognitive and Agricultural Revolutions, the formation of empires, and the impact of scientific advancements. The book prompts readers to reconsider established narratives, examining the interplay of biology and culture in shaping human societies. Through engaging storytelling, Harari presents a thought-provoking reflection on our species' past, present, and potential future.")
@@ -193,7 +194,7 @@ class DatabaseHandler (context: Context) : SQLiteOpenHelper (context, DATABASE_N
         val book2 = ContentValues().apply {
             put(KEY_TITLE, "The Picture of Dorian Gray")
             put(KEY_AUTHOR, "Oscar Wilde")
-            put(KEY_CATEGORY_ID_FK, getCategoryID("Classics", db)) //error pa siya wala adding of books muna nilagay ko
+            put(KEY_CATEGORY_ID_FK, getCategoryID("Classics", db))
             put(KEY_RATING, "4.11/5")
             put(KEY_PRICE, "PHP 1,300")
             put(KEY_DESCRIPTION,"Oscar Wilde’s only novel is the dreamlike story of a young man who sells his soul for eternal youth and beauty. Wilde forged a devastating portrait of the effects of evil and debauchery on a young aesthete in late-19th-century England in this celebrated work. Combining elements of the Gothic horror novel and decadent French fiction, the book centers on a striking premise: As Dorian Gray sinks into a life of crime and gross sensuality, his body retains perfect youth and vigor while his recently painted portrait grows day by day into a hideous record of evil, which he must keep hidden from the world. This mesmerizing tale of horror and suspense has been popular for over a century. It ranks as one of Wilde's most important creations and among the classic achievements of its kind.")
@@ -206,7 +207,7 @@ class DatabaseHandler (context: Context) : SQLiteOpenHelper (context, DATABASE_N
         val book3 = ContentValues().apply {
             put(KEY_TITLE, "The Name of the Wind")
             put(KEY_AUTHOR, "Patrick Rothfuss")
-            put(KEY_CATEGORY_ID_FK, getCategoryID("Fantasy", db)) //error pa siya wala adding of books muna nilagay ko
+            put(KEY_CATEGORY_ID_FK, getCategoryID("Fantasy", db))
             put(KEY_RATING, "4.55/5")
             put(KEY_PRICE, "PHP 1,055")
             put(KEY_DESCRIPTION,"\"The Name of the Wind\" follows the tale of Kvothe, a gifted young musician and magician. The story, narrated by Kvothe, recounts his journey from a gifted child in a traveling troupe to a powerful wizard, unraveling mysteries and facing formidable challenges. Rothfuss weaves a rich and immersive narrative, blending magic, music, and the intricate tapestry of Kvothe's life in a captivating fantasy world.")
@@ -219,7 +220,7 @@ class DatabaseHandler (context: Context) : SQLiteOpenHelper (context, DATABASE_N
         val book4 = ContentValues().apply {
             put(KEY_TITLE, "The Hunger Games")
             put(KEY_AUTHOR, "Suzanne Collins")
-            put(KEY_CATEGORY_ID_FK, getCategoryID("Young Adult", db)) //error pa siya wala adding of books muna nilagay ko
+            put(KEY_CATEGORY_ID_FK, getCategoryID("Young Adult", db))
             put(KEY_RATING, "4.34/5")
             put(KEY_PRICE, "PHP 600")
             put(KEY_DESCRIPTION,"In a dystopian future, Katniss Everdeen volunteers to take her sister's place in the annual Hunger Games, a televised fight to the death. Suzanne Collins crafts a thrilling narrative that explores survival, sacrifice, and rebellion themes.")
@@ -232,7 +233,7 @@ class DatabaseHandler (context: Context) : SQLiteOpenHelper (context, DATABASE_N
         val book5 = ContentValues().apply {
             put(KEY_TITLE, "The Girl with the Dragon Tattoo")
             put(KEY_AUTHOR, "Stieg Larsson")
-            put(KEY_CATEGORY_ID_FK, getCategoryID("Crime", db)) //error pa siya wala adding of books muna nilagay ko
+            put(KEY_CATEGORY_ID_FK, getCategoryID("Crime", db))
             put(KEY_RATING, "4.14/5")
             put(KEY_PRICE, "PHP 300")
             put(KEY_DESCRIPTION,"Mikael Blomkvist, a journalist, teams up with a brilliant hacker, Lisbeth Salander, to solve a decades-old disappearance in Sweden. Stieg Larsson's gripping novel combines crime, intrigue, and a complex investigation.")
@@ -245,7 +246,7 @@ class DatabaseHandler (context: Context) : SQLiteOpenHelper (context, DATABASE_N
         val book6 = ContentValues().apply {
             put(KEY_TITLE, "The Shining")
             put(KEY_AUTHOR, "Stephen King")
-            put(KEY_CATEGORY_ID_FK, getCategoryID("Horror", db)) //error pa siya wala adding of books muna nilagay ko
+            put(KEY_CATEGORY_ID_FK, getCategoryID("Horror", db))
             put(KEY_RATING, "4.21/5")
             put(KEY_PRICE, "PHP 400")
             put(KEY_DESCRIPTION,"Stephen King's \"The Shining\" takes readers to the eerie Overlook Hotel, where the Torrance family faces supernatural forces. As the hotel exerts its malevolent influence, the story becomes a chilling exploration of isolation and madness.")
@@ -258,7 +259,7 @@ class DatabaseHandler (context: Context) : SQLiteOpenHelper (context, DATABASE_N
         val book7 = ContentValues().apply {
             put(KEY_TITLE, "Dune")
             put(KEY_AUTHOR, "Frank Herbert")
-            put(KEY_CATEGORY_ID_FK, getCategoryID("Sci-Fi", db)) //error pa siya wala adding of books muna nilagay ko
+            put(KEY_CATEGORY_ID_FK, getCategoryID("Sci-Fi", db))
             put(KEY_RATING, "4.23/5")
             put(KEY_PRICE, "PHP 700")
             put(KEY_DESCRIPTION,"Frank Herbert's \"Dune\" is a science fiction epic set in a distant future. It follows young Paul Atreides as he navigates political intrigue, environmental challenges, and mystical forces on the desert planet of Arrakis.")
@@ -271,7 +272,7 @@ class DatabaseHandler (context: Context) : SQLiteOpenHelper (context, DATABASE_N
         val book8 = ContentValues().apply {
             put(KEY_TITLE, "The Kite Runner")
             put(KEY_AUTHOR, "Khaled Hosseini")
-            put(KEY_CATEGORY_ID_FK, getCategoryID("Drama", db)) //error pa siya wala adding of books muna nilagay ko
+            put(KEY_CATEGORY_ID_FK, getCategoryID("Drama", db))
             put(KEY_RATING, "4.29/5")
             put(KEY_PRICE, "PHP 400")
             put(KEY_DESCRIPTION,"Khaled Hosseini's \"The Kite Runner\" explores friendship, betrayal, and redemption in war-torn Afghanistan. The novel follows the intertwined lives of Amir and Hassan against a backdrop of historical upheaval.")
@@ -282,7 +283,7 @@ class DatabaseHandler (context: Context) : SQLiteOpenHelper (context, DATABASE_N
         db?.insert(TABLE_DETAILS, null, book8)
     }
     @SuppressLint("Range")
-    private fun getCategoryID(categoryName: String, db: SQLiteDatabase?): Int {
+    fun getCategoryID(categoryName: String, db: SQLiteDatabase?): Int {
         val selection = "$KEY_CATEGORY_NAME = ?"
         val selectionArgs = arrayOf(categoryName)
         val cursor = db?.query(TABLE_CATEGORIES, arrayOf(KEY_CATEGORY_ID), selection, selectionArgs, null, null, null)
@@ -297,11 +298,18 @@ class DatabaseHandler (context: Context) : SQLiteOpenHelper (context, DATABASE_N
         } ?: -1
     }
     @SuppressLint("Range")
+<<<<<<< HEAD
     fun getBooksByCategory(category: String, showInLibrary: Boolean, showInFavorites: Boolean): List<Details> {
         val db = this.readableDatabase
         val query = "SELECT * FROM $TABLE_DETAILS WHERE $KEY_CATEGORY_ID_FK = ?" +
                 " AND ($KEY_ADD_TO_LIBRARY = ? OR $KEY_ADD_TO_FAVE = ?)"
         val selectionArgs = arrayOf(getCategoryID(category, db).toString(), showInLibrary.toString(), showInFavorites.toString())
+=======
+    fun getBooksByCategory(categoryId: Int): List<Details> {
+        val db = this.readableDatabase
+        val query = "SELECT * FROM $TABLE_DETAILS WHERE $KEY_CATEGORY_ID_FK = ?"
+        val selectionArgs = arrayOf(categoryId.toString())
+>>>>>>> 960c0c65b00dec705ae204f51dfea6753b7a0044
 
         val cursor = db.rawQuery(query, selectionArgs)
         val books = mutableListOf<Details>()
@@ -312,7 +320,7 @@ class DatabaseHandler (context: Context) : SQLiteOpenHelper (context, DATABASE_N
                     it.getInt(it.getColumnIndex(KEY_DETAILS_ID)),
                     it.getString(it.getColumnIndex(KEY_TITLE)),
                     it.getString(it.getColumnIndex(KEY_AUTHOR)),
-                    it.getString(it.getColumnIndex(KEY_CATEGORY_ID_FK)),
+                    it.getInt(it.getColumnIndex(KEY_CATEGORY_ID_FK)),
                     it.getString(it.getColumnIndex(KEY_IMAGE_SOURCE)),
                     it.getString(it.getColumnIndex(KEY_RATING)),
                     it.getString(it.getColumnIndex(KEY_PRICE)),
@@ -327,5 +335,26 @@ class DatabaseHandler (context: Context) : SQLiteOpenHelper (context, DATABASE_N
         db.close()
         return books
     }
+<<<<<<< HEAD
 
+=======
+    @SuppressLint("Range")
+    fun getCategoryNameById(categoryId: Int): String {
+        val db = this.readableDatabase
+        val selection = "$KEY_CATEGORY_ID = ?"
+        val selectionArgs = arrayOf(categoryId.toString())
+        val cursor = db.query(TABLE_CATEGORIES, arrayOf(KEY_CATEGORY_NAME), selection, selectionArgs, null, null, null)
+
+        var categoryName = ""
+
+        cursor.use {
+            if (it.moveToFirst()) {
+                categoryName = it.getString(it.getColumnIndex(KEY_CATEGORY_NAME))
+            }
+        }
+
+        db.close()
+        return categoryName
+    }
+>>>>>>> 960c0c65b00dec705ae204f51dfea6753b7a0044
 }
